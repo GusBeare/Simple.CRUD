@@ -1,0 +1,60 @@
+h1, h2 {
+    color: #006838;
+    font-family: 'Raleway', sans-serif;
+    padding-top: 10px;
+}
+
+.navbar-brand {
+    padding: 0;
+    height: 95px;
+}
+.navbar-brand>img {
+    max-height: 95px;
+    width: 280px;
+    padding-right: 24px;
+    padding-left: 14px;
+}
+.nav .navbar-nav {
+    border-bottom: 0;
+}
+.navbar-default {
+    border-bottom: 0;
+    padding-top: 20px;
+}
+.navbar-nav>li>a {
+    font-size: 1.2em;
+    font-family: 'Raleway', sans-serif;
+}
+.btn-default {
+    color: #fff;
+    background-color: #8dc73f;
+    border-color: #ccc;
+    font-size: 1.2em;
+    font-family: 'Raleway', sans-serif;
+}
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open>.dropdown-toggle.btn-default {
+    color: #006838;
+    background-color: #8dc73f;
+    border-color: #8dc73f; /*set the color you want here*/
+}
+
+/*This is modifying the btn-primary colors but you could create your own .btn-something class as well*/
+.btn-primary {
+    color: #fff;
+    background-color: #0495c9;
+    border-color: #357ebd; /*set the color you want here*/
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #00b3db;
+    border-color: #285e8e; /*set the color you want here*/
+}
+
+.navbar-btn {
+    padding-right: 20px;
+}
+
+.navbar-fixed-top { 
+    position: relative; 
+}
+
