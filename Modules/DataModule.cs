@@ -1,7 +1,7 @@
 ﻿using System;
 using Nancy.Extensions;
 using Nancy;
-using System.Web.Script.Serialization;
+using Nancy.Json;
 using Simple.Data;
 
 
@@ -9,6 +9,8 @@ namespace SimpleCRUD
 {
     public class DataModule : NancyModule
     {
+        private const string KeyName = "Tablename"; // for some reason Nancy makes the first letter upper case?
+
         public DataModule()
         {
             Post["/data/insert"] = parameters =>
@@ -22,8 +24,6 @@ namespace SimpleCRUD
                 try
                 {
                     
-                    const string KeyName = "tablename";
-
                     // find the table name in the dictionary. There must always be one
                     if (formRow.ContainsKey(KeyName))
                     {
