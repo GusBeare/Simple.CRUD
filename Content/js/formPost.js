@@ -141,7 +141,10 @@ var handleFormSubmit = function handleFormSubmit(event) {
 
     http.onreadystatechange = function () { //Call a function when the state changes.
         if (http.readyState === 4 && http.status === 200) {
-            // alert("Status was: " + http.status + " => Success");
+
+            var responseContainer = document.getElementsByClassName('response__display')[0];
+            responseContainer.textContent = http.responseText + " some text";
+           
         } 
     }
         

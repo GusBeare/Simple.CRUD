@@ -44,7 +44,7 @@ namespace SimpleCRUD
                     return Response.AsJson("{\"message\":\"" + ex.Message + "\"}");
                 }
 
-                return Response.AsJson("{message: Success!}");
+                return Response.AsText("The data was inserted successfully! ");
 
             };
         }
