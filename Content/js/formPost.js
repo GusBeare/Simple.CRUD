@@ -133,7 +133,7 @@ var handleFormSubmit = function handleFormSubmit(event) {
 
     // Post the data to our handler
     var http = new XMLHttpRequest();
-    var url = "/data/insert";
+    var url = "/data/insert?age=10&value=test";
     http.open("POST", url, true);
 
     // Send the proper header information along with the request

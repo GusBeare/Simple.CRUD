@@ -2,7 +2,7 @@
 using Nancy.Gzip;
 using Nancy.TinyIoc;
 
-namespace BayLeafWebSite
+namespace SimpleCRUD
 {
     using Nancy;
 

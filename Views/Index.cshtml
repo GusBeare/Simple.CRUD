@@ -14,7 +14,8 @@
                 <div>
                     <h2>Contact Us</h2>
                 </div>
-                <input name="tablename" type="hidden" value="contact-log"/>
+                <input name="tablename" type="hidden" value="contactlog"/>
+                <input name="lastupdated" type="hidden" value="@DateTime.Now"/>
                 <div class="form-group">
                     <input class="form-check" id="salutation-mr" name="salutation" type="radio" value="Mr."/>
                     <label class="form-check" for="salutation-mr">Mr.</label>
@@ -43,13 +44,6 @@
                     <label for="message">Enter a Message</label>
                     <textarea class="form-control" id="message" name="message" rows="4" cols="60"></textarea>
                 </div>
-                <div class="form-group">
-                    <p>Please send me:</p>
-                    <input class="form-check" id="snacks-pizza" name="snacks" type="checkbox" value="pizza"/>
-                    <label class="form-check" for="snacks-pizza">Pizza</label>
-                    <input class="form-check" id="snacks-cake" name="snacks" type="checkbox" value="cake"/>
-                    <label class="form-check" for="snacks-cake">Cake</label>
-                </div>
    
                 <button class="btn btn-primary" type="submit">Send It!</button>
             </form>
@@ -58,18 +52,15 @@
                 <pre class="alert-info"><code class="results__display"></code></pre>
             </div>
 
-            <div class="response">
+            @*<div class="response">
                 <h2 class="results__heading">Server POST response</h2>
                 <pre class="alert-info"><code class="results__display"></code></pre>
-            </div>
+            </div>*@
         </div>
     </div>
     <div class="col-lg-2">
         <div class="row"></div>
     </div>
-
-   
-
 </div>
 
 
