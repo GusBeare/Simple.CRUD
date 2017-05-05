@@ -1,7 +1,7 @@
 ﻿using System;
 using Nancy.Extensions;
 using Nancy;
-using Nancy.Json;
+using System.Web.Script.Serialization;
 using Simple.Data;
 
 
@@ -17,17 +17,24 @@ namespace SimpleCRUD
                 var json = Request.Body.AsString();
                 
                 var jss = new JavaScriptSerializer();
-                var formRow = jss.Deserialize<dynamic>(json);
+                var formRow = jss.Deserialize<dynamic>(json); // the data we get back is a dictionary
 
                 try
                 {
-                    // get the table name. There must always be one
-                    string tableName = formRow.tablename;
                     
-                    var db = Database.Open(); // open db with Simple.Data
+                    const string KeyName = "tablename";
 
-                    // insert the row and get the new Id back, Simple.Data should return back the new row with new Id
-                    var newRow = db[tableName].Insert(formRow);
+                    // find the table name in the dictionary. There must always be one
+                    if (formRow.ContainsKey(KeyName))
+                    {
+                        var value = formRow[KeyName];
+                        var db = Database.Open(); // open db with Simple.Data
+
+                        // insert the row and get the new Id back, Simple.Data should return back the new row with new Id
+                        // we pass in the table name 'value' and Simple.Data is smart enough to recognise it
+                        var newRow = db[value].Insert(formRow);
+                    }
+
 
                 }
 
@@ -36,16 +43,6 @@ namespace SimpleCRUD
                    
                     return Response.AsJson("{\"message\":\"" + ex.Message + "\"}");
                 }
-
-                // now we can dynamically update the table with the passed in table name and the new object
-                //string tableToUse = "MyTable";
-                //var test = db[tableToUse].All();
-
-                // or look stuff up by a passed in field name (use another route such as /data/get)
-                // var table = "MyTable";
-                //var keyColumn = "Id";
-                //int id = 42;
-                //var entity = db[table].Find(db[table][keyColumn] == id);
 
                 return Response.AsJson("{message: Success!}");
 
