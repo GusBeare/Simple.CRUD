@@ -9,14 +9,15 @@
     <h3>Simple.CRUD</h3>
     <p>Contact Us</p>
 </div>
+<div class="row">
+<form class="contact-form">   
 
 @if (Model != null)
 {
-    <div class="row">
-        <form class="contact-form">           
+            <input name="Id" type="hidden" value="@Model.Id"/>
             <input name="tablename" type="hidden" value="contactlog"/>
             <input name="lastupdated" type="hidden" value="@DateTime.Now"/>
-            <input name="method" type="hidden" value="@ViewBag.Method"/>
+            <input name="method" type="hidden" value="update"/>
             <div class="form-group">
                 <input class="form-check" id="salutation-mr" name="salutation" type="radio" value="Mr."/>
                 <label class="form-check" for="salutation-mr">Mr.</label>
@@ -42,8 +43,7 @@
                 <textarea class="form-control" id="message" name="message" rows="4" cols="60">@Model.Message</textarea>
             </div>
             <button class="btn btn-primary" type="submit">Send It!</button>
-        </form>
-    </div>
+      
 }
 else
 {
@@ -80,6 +80,8 @@ else
         </form>
     </div>
 }
+    </form>
+</div>
 
 <div class="row">       
     <div class="results">
@@ -95,4 +97,4 @@ else
 
 
 <!-- Code to serialise and post the form and handle the response -->
-<script src="Content/js/formPost.js"></script>
+<script src="~/Content/js/formPost.js"></script>

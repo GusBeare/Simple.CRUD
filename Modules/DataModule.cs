@@ -50,7 +50,10 @@ namespace SimpleCRUD
                                     var newRow = db[tableName].Insert(formRow);
                                     return Response.AsText("The data was inserted successfully into table: " + tableName);
                                 case "update":
-                                    db[tableName].update(formRow);
+                                    // we need to remove tablename and method from the form
+                                    formRow.Remove(KeyNameTable);
+                                    formRow.Remove(KeyNameMethod);
+                                    db[tableName].UpdateById(formRow);
                                     return Response.AsText("The table: " + tableName + " was updated successfully!");
                                 case "delete":
                                     db[tableName].delete(formRow);
