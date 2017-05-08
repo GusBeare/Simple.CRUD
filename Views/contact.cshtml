@@ -14,6 +14,7 @@
                 <form class="contact-form">           
                     <input name="tablename" type="hidden" value="contactlog"/>
                     <input name="lastupdated" type="hidden" value="@DateTime.Now"/>
+                    <input name="method" type="hidden" value="@ViewBag.Method"/>
                     <div class="form-group">
                         <input class="form-check" id="salutation-mr" name="salutation" type="radio" value="Mr."/>
                         <label class="form-check" for="salutation-mr">Mr.</label>

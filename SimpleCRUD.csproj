@@ -179,7 +179,7 @@
   <ItemGroup>
     <Content Include="web.config" />
     <Content Include="Views\index.cshtml" />
-    <Content Include="Views\products.cshtml" />
+    <Content Include="Views\product-list.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
