@@ -9,7 +9,8 @@ namespace SimpleCRUD
 {
     public class DataModule : NancyModule
     {
-        private const string KeyName = "Tablename"; // for some reason Nancy makes the first letter upper case?
+        private const string KeyNameTable = "Tablename"; 
+        private const string KeyNameMethod = "Method";
 
         public DataModule()
         {
@@ -27,14 +28,29 @@ namespace SimpleCRUD
                 {
                     
                     // find the table name in the dynamic dictionary. There must always be one
-                    if (formRow.ContainsKey(KeyName))
+                    if (formRow.ContainsKey(KeyNameTable))
                     {
-                        tableName = formRow[KeyName];
+                        tableName = formRow[KeyNameTable];
                         var db = Database.Open(); // open db with Simple.Data
 
-                        // insert the row and get the new Id back, Simple.Data should return back the new row with new Id
-                        // we pass in the table name 'value' and Simple.Data is smart enough to recognise it
-                        var newRow = db[tableName].Insert(formRow);
+
+                        // switch on the method and modify the table
+                        if (formRow.ContainsKey(KeyNameMethod))
+                        {
+                            string m = formRow[KeyNameMethod];
+                            switch (m)
+                            {
+                                case "insert":
+                                    var newRow = db[tableName].Insert(formRow);
+                                    break;
+                                case "update":
+                                    db[tableName].update(formRow);
+                                    break;
+                                case "delete":
+                                    db[tableName].delete(formRow);
+                                    break;
+                            }
+                        }   
                     }
 
 
