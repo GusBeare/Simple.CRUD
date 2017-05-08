@@ -1,8 +1,15 @@
+pre {
+    font-family: monospace;
+}
 h1, h2 {
     color: #006838;
     font-family: 'Raleway', sans-serif;
     padding-top: 10px;
     font-weight: bold;
+}
+p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
 }
 
 .navbar-brand {

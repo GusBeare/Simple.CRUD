@@ -5,15 +5,77 @@
     Layout = "Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
-    <div class="col-lg-2"><div class="row"></div></div>
-    
-    <div class="col-lg-6">
-        <div class="row">
-        </div>
+<div class="row">
+    <h2>Simple.CRUD</h2>
+    <p>Build a table</p>
+    <div class="col-md-12">
+        <p>
+            <pre><code>
+CREATE TABLE contactLog (
+    [Id] int identity not null,
+    [Salutation] varchar(10) null,
+    [Name] varchar(255) null,
+    [Email] varchar(255) null,
+    [Subject] varchar(255) null,
+    [Message] varchar(255) null,
+    [LastUpdated] datetime2 not null
+    );</code></pre>
+        </p>
     </div>
-    <div class="col-lg-2">
-        <div class="row"></div>
-    </div>
+
+
 </div>
+
+<div class="row">
+    <p>Build a form</p>
+<div class="col-md-12">
+    <pre class="pre-scrollable"><code>
+&lt;form&gt;
+    &lt;input name="tablename" type="hidden" value="contactlog"/&gt;
+    &lt;input name="lastupdated" type="hidden" value="@DateTime.Now"/&gt;
+            
+    &lt;input id="salutation-mr" name="salutation" type="radio" value="Mr."/&gt;
+    &lt;label for="salutation-mr"&gt;Mr.&lt;/label&gt;
+            
+    &lt;input id="salutation-mrs" name="salutation" type="radio" value="Mrs."/&gt;
+    &lt;label for="salutation-mrs"&gt;Mrs.&lt;/label&gt;
+            
+    &lt;input id="salutation-ms" name="salutation" type="radio" value="Ms."/&gt;
+    &lt;label for="salutation-ms"&gt;Ms.&lt;/label&gt;
+            
+    &lt;label for="name"&gt;Full Name&lt;/label&gt;
+    &lt;input id="name" name="name" type="text"/&gt;
+            
+    &lt;label for="email"&gt;Email Address&lt;/label&gt;
+    &lt;input id="email" name="email" type="email"/&gt;
+            
+    &lt;label for="subject"&gt;How can I help you?&lt;/label&gt;
+    &lt;select id="subject" name="subject"&gt;
+            &lt;option&gt;I need my head seeing to.&lt;/option&gt;
+            &lt;option&gt;I'm having a baby.&lt;/option&gt;
+            &lt;option&gt;I need help with my dead relative's estate.&lt;/option&gt;
+    &lt;/select&gt;
+            
+    &lt;label for="message"&gt;Enter a Message&lt;/label&gt;
+    &lt;textarea id="message" name="message" rows="4" cols="60"&gt;&lt;/textarea&gt;
+            
+    &lt;button type="submit"&gt;Send It!&lt;/button&gt;
+&lt;/form&gt;
+        </code></pre></div>
+</div>
+
+    <div class="row">
+        <p>Add a js file to handle the form post</p>
+        <pre><code>&lt;script src="Content/js/formPost.js"&gt;&lt;/script&gt;</code></pre>
+    </div>
+
+
+
+
+
+
+
+
+
+
 

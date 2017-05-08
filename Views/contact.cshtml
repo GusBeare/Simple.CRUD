@@ -5,15 +5,13 @@
     Layout = "Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
-    
-    <div class="col-md-6 form-group">
         <div class="row">
-            <div class="col-md-12">
-                <form class="contact-form">
-                    <div>
-                        <h2>Contact Us</h2><br/>
-                    </div>
+            <h2>Simple.CRUD</h2>
+            <p>Contact Us</p>
+        </div>
+   
+        <div class="row">
+                <form class="contact-form">           
                     <input name="tablename" type="hidden" value="contactlog"/>
                     <input name="lastupdated" type="hidden" value="@DateTime.Now"/>
                     <div class="form-group">
@@ -46,12 +44,10 @@
                     </div>
                     <button class="btn btn-primary" type="submit">Send It!</button>
                 </form>
-            </div>
         </div>
-    </div>
-    <div class="col-md-6 form-group">
+    
         <div class="row">
-            <div class="col-md-12">
+           
                 <div class="results">
                     <h2 class="results__heading">Form data as Json</h2>
                     <pre class="alert-info"><code class="results__display"></code></pre>
@@ -61,11 +57,9 @@
                     <h2 class="results__heading">Server POST response</h2>
                     <pre class="alert-info"><code class="response__display"></code></pre>
                 </div>
-             </div>
+          
         </div>
-    </div>
 
-</div>
 
 
 <!-- Code to serialise and post the form and handle the response -->

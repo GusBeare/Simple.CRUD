@@ -9,19 +9,25 @@ namespace SimpleCRUD
         public IndexModule()
         {
 
-            Get["/"] = parameters =>
+            Get["/"] = p =>
             {
                 ViewBag.Title = "Home";
                 return View["index"];
             };
 
-            Get["/contact"] = parameters =>
+            Get["/contact"] = p =>
             {
                 ViewBag.Method = "Insert";
                 return View["contact"];
             };
 
-           
+            Get["/products"] = p =>
+            {
+                ViewBag.Method = "List";
+                return View["products"];
+            };
+
+
         }
     }
 }
