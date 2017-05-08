@@ -1,5 +1,10 @@
 ﻿
 
+using System.Collections;
+using System.Collections.Generic;
+using System.Dynamic;
+using Simple.Data;
+
 namespace SimpleCRUD
 {
     using Nancy;
@@ -26,22 +31,11 @@ namespace SimpleCRUD
             // read list of enquiries
             Get["/enquiry-list"] = p =>
             {
-                ViewBag.Method = "read";
-                return View["enquiry-list"];
-            };
+                var db = Database.Open();
+                var uRows = db.contactlog.All().OrderByDescending(db.contactlog.LastUpdated);
 
-            // update an enquiry
-            Get["/enquiry/update"] = p =>
-            {
-                ViewBag.Method = "update";
-                return View["enquiry"];
-            };
-
-            // delete an enquiry
-            Get["/enquiry/delete"] = p =>
-            {
-                ViewBag.Method = "update";
-                return View["enquiry"];
+                ViewBag.Method = "List";
+                return View["enquiry-list", uRows];
             };
 
         }

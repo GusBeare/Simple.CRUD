@@ -5,10 +5,38 @@
     Layout = "Views/Shared/_Layout.cshtml";
 }
 
-    <div class="row">
-        <h2>Simple.CRUD</h2>
-        <p>List of Enquiries</p><br/>
-    </div>
+<div class="row">
+    <h3>Simple.CRUD</h3>
+    <p>List of Enquiries</p><br/>
+</div>
+
+@if (Model != null)
+{
+    foreach (var row in Model)
+     {
+         <div class="row">
+             <div class="col-md-3">
+                 <a href="/data/readrow/contactlog/@row.Id">@row.Salutation @row.Name</a>  
+             </div>
+             <div class="col-md-3">
+                 @row.Email 
+             </div>
+             <div class="col-md-2">
+                 @row.Subject
+             </div>
+             <div class="col-md-2">
+                 @row.Message
+             </div>
+         </div>
+         <hr/>
+    }
+
+}
+else
+{
+    <div>No data!</div>
+}
+
 
 
 

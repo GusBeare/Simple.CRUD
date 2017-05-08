@@ -126,14 +126,14 @@ var handleFormSubmit = function handleFormSubmit(event) {
     var data = formToJSON(form.elements);
 
     // Demo only: print the form data onscreen as a formatted JSON object.
-    var dataContainer = document.getElementsByClassName('results__display')[0];
+    var dataContainer = document.getElementsByClassName('results_display')[0];
 
     // Use `JSON.stringify()` to make the output valid, human-readable JSON.
     dataContainer.textContent = JSON.stringify(data, null, "  ");
 
     // Post the data to our handler
     var http = new XMLHttpRequest();
-    var url = "/data/insert";
+    var url = "/data/modify";
     http.open("POST", url, true);
 
     // Send the proper header information along with the request
@@ -142,7 +142,7 @@ var handleFormSubmit = function handleFormSubmit(event) {
     http.onreadystatechange = function () { //Call a function when the state changes.
         if (http.readyState === 4 && http.status === 200) {
 
-            var responseContainer = document.getElementsByClassName('response__display')[0];
+            var responseContainer = document.getElementsByClassName('response_display')[0];
             responseContainer.textContent = http.responseText;
            
         } 

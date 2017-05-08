@@ -14,10 +14,17 @@ namespace SimpleCRUD
 
         public DataModule()
         {
-            Post["/data/insert"] = parameters =>
-            {
-                var tableName="";
 
+            Get["/data/readrow/{table}/{Id}"] = p =>
+            {
+                ViewBag.Method = "update";
+                var db = Database.Open();
+                var uRow = db[p.table].FindById(p.Id);
+                return View["enquiry",uRow];
+            };
+
+            Post["/data/modify"] = parameters =>
+            {
                 // deserialise the json string from the form and convert to a dynamic object
                 var json = Request.Body.AsString();
                 var jss = new JavaScriptSerializer();
@@ -29,7 +36,7 @@ namespace SimpleCRUD
                     // find the table name in the dynamic dictionary. There must always be one
                     if (formRow.ContainsKey(KeyNameTable))
                     {
-                        tableName = formRow[KeyNameTable];
+                        string tableName = formRow[KeyNameTable];
                         var db = Database.Open(); // open db with Simple.Data
 
 

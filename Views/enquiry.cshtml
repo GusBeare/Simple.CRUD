@@ -5,62 +5,93 @@
     Layout = "Views/Shared/_Layout.cshtml";
 }
 
-        <div class="row">
-            <h2>Simple.CRUD</h2>
-            <p>Contact Us</p>
-        </div>
-   
-        <div class="row">
-                <form class="contact-form">           
-                    <input name="tablename" type="hidden" value="contactlog"/>
-                    <input name="lastupdated" type="hidden" value="@DateTime.Now"/>
-                    <input name="method" type="hidden" value="@ViewBag.Method"/>
-                    <div class="form-group">
-                        <input class="form-check" id="salutation-mr" name="salutation" type="radio" value="Mr."/>
-                        <label class="form-check" for="salutation-mr">Mr.</label>
-                        <input class="form-check" id="salutation-mrs" name="salutation" type="radio" value="Mrs."/>
-                        <label class="form-check" for="salutation-mrs">Mrs.</label>
-                        <input class="form-check" id="salutation-ms" name="salutation" type="radio" value="Ms."/>
-                        <label class="form-check" for="salutation-ms">Ms.</label>
-                    </div>
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input class="form-control" id="name" name="name" type="text"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input class="form-control" id="email" name="email" type="email"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">How can I help you?</label>
-                        <select class="form-control" id="subject" name="subject">
-                            <option>I need my head seeing to.</option>
-                            <option>I'm having a baby.</option>
-                            <option>I need help with my dead relative's estate.</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Enter a Message</label>
-                        <textarea class="form-control" id="message" name="message" rows="4" cols="60"></textarea>
-                    </div>
-                    <button class="btn btn-primary" type="submit">Send It!</button>
-                </form>
-        </div>
-    
-        <div class="row">
-           
-                <div class="results">
-                    <h2 class="results__heading">Form data as Json</h2>
-                    <pre class="alert-info"><code class="results__display"></code></pre>
-                </div>
+<div class="row">
+    <h3>Simple.CRUD</h3>
+    <p>Contact Us</p>
+</div>
 
-                <div class="response">
-                    <h2 class="results__heading">Server POST response</h2>
-                    <pre class="alert-info"><code class="response__display"></code></pre>
-                </div>
-          
-        </div>
+@if (Model != null)
+{
+    <div class="row">
+        <form class="contact-form">           
+            <input name="tablename" type="hidden" value="contactlog"/>
+            <input name="lastupdated" type="hidden" value="@DateTime.Now"/>
+            <input name="method" type="hidden" value="@ViewBag.Method"/>
+            <div class="form-group">
+                <input class="form-check" id="salutation-mr" name="salutation" type="radio" value="Mr."/>
+                <label class="form-check" for="salutation-mr">Mr.</label>
+                <input class="form-check" id="salutation-mrs" name="salutation" type="radio" value="Mrs."/>
+                <label class="form-check" for="salutation-mrs">Mrs.</label>
+                <input class="form-check" id="salutation-ms" name="salutation" type="radio" value="Ms."/>
+                <label class="form-check" for="salutation-ms">Ms.</label>
+            </div>
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input class="form-control" id="name" name="name" value="@Model.Name" type="text"/>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input class="form-control" id="email" name="email" type="email" value="@Model.Email"/>
+            </div>
+            <div class="form-group">
+                <label for="subject">How can I help you?</label>
+                <input class="form-control" id="subject" name="subject" value="@Model.Subject"/>
+            </div>
+            <div class="form-group">
+                <label for="message">Enter a Message</label>
+                <textarea class="form-control" id="message" name="message" rows="4" cols="60">@Model.Message</textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Send It!</button>
+        </form>
+    </div>
+}
+else
+{
+    <div class="row">
+        <form class="contact-form">           
+            <input name="tablename" type="hidden" value="contactlog"/>
+            <input name="lastupdated" type="hidden" value="@DateTime.Now"/>
+            <input name="method" type="hidden" value="@ViewBag.Method"/>
+            <div class="form-group">
+                <input class="form-check" id="salutation-mr" name="salutation" type="radio" value="Mr."/>
+                <label class="form-check" for="salutation-mr">Mr.</label>
+                <input class="form-check" id="salutation-mrs" name="salutation" type="radio" value="Mrs."/>
+                <label class="form-check" for="salutation-mrs">Mrs.</label>
+                <input class="form-check" id="salutation-ms" name="salutation" type="radio" value="Ms."/>
+                <label class="form-check" for="salutation-ms">Ms.</label>
+            </div>
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input class="form-control" id="name" name="name" type="text"/>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input class="form-control" id="email" name="email" type="email" />
+            </div>
+            <div class="form-group">
+                <label for="subject">How can I help you?</label>
+                <input class="form-control" id="subject" name="subject" />
+            </div>
+            <div class="form-group">
+                <label for="message">Enter a Message</label>
+                <textarea class="form-control" id="message" name="message" rows="4" cols="60"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Send It!</button>
+        </form>
+    </div>
+}
 
+<div class="row">       
+    <div class="results">
+        <h3>Form data as Json</h3>
+        <pre class="alert-info"><code class="results_display"></code></pre>
+    </div>
+
+    <div class="response">
+        <h3>Server POST response</h3>
+        <pre class="alert-info"><code class="response_display"></code></pre>
+    </div>
+</div>
 
 
 <!-- Code to serialise and post the form and handle the response -->
