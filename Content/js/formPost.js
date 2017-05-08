@@ -133,7 +133,7 @@ var handleFormSubmit = function handleFormSubmit(event) {
 
     // Post the data to our handler
     var http = new XMLHttpRequest();
-    var url = "/data/insert?age=10&value=test";
+    var url = "/data/insert";
     http.open("POST", url, true);
 
     // Send the proper header information along with the request
@@ -143,7 +143,7 @@ var handleFormSubmit = function handleFormSubmit(event) {
         if (http.readyState === 4 && http.status === 200) {
 
             var responseContainer = document.getElementsByClassName('response__display')[0];
-            responseContainer.textContent = http.responseText + " some text";
+            responseContainer.textContent = http.responseText;
            
         } 
     }

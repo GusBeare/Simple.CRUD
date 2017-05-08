@@ -10,52 +10,6 @@
     
     <div class="col-lg-6">
         <div class="row">
-            <form class="contact-form">
-                <div>
-                    <h2>Contact Us</h2>
-                </div>
-                <input name="tablename" type="hidden" value="contactlog"/>
-                <input name="lastupdated" type="hidden" value="@DateTime.Now"/>
-                <div class="form-group">
-                    <input class="form-check" id="salutation-mr" name="salutation" type="radio" value="Mr."/>
-                    <label class="form-check" for="salutation-mr">Mr.</label>
-                    <input class="form-check" id="salutation-mrs" name="salutation" type="radio" value="Mrs."/>
-                    <label class="form-check" for="salutation-mrs">Mrs.</label>
-                    <input class="form-check" id="salutation-ms" name="salutation" type="radio" value="Ms."/>
-                    <label class="form-check" for="salutation-ms">Ms.</label>
-                </div>
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input class="form-control" id="name" name="name" type="text"/>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input class="form-control" id="email" name="email" type="email"/>
-                </div>
-                <div class="form-group">
-                    <label for="subject">How can I help you?</label>
-                    <select class="form-control" id="subject" name="subject">
-                        <option>I need my head seeing to.</option>
-                        <option>I'm having a baby.</option>
-                        <option>I need help with my dead relative's estate.</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="message">Enter a Message</label>
-                    <textarea class="form-control" id="message" name="message" rows="4" cols="60"></textarea>
-                </div>
-   
-                <button class="btn btn-primary" type="submit">Send It!</button>
-            </form>
-            <div class="results">
-                <h2 class="results__heading">Form data as Json</h2>
-                <pre class="alert-info"><code class="results__display"></code></pre>
-            </div>
-
-            <div class="response">
-                <h2 class="results__heading">Server POST response</h2>
-                <pre class="alert-info"><code class="response__display"></code></pre>
-            </div>
         </div>
     </div>
     <div class="col-lg-2">
@@ -63,6 +17,3 @@
     </div>
 </div>
 
-
-<!-- Code to serialise and post the form and handle the response -->
-<script src="Content/js/formPost.js"></script>

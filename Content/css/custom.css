@@ -2,6 +2,7 @@ h1, h2 {
     color: #006838;
     font-family: 'Raleway', sans-serif;
     padding-top: 10px;
+    font-weight: bold;
 }
 
 .navbar-brand {

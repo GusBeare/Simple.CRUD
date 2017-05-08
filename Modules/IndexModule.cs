@@ -8,12 +8,20 @@ namespace SimpleCRUD
     {
         public IndexModule()
         {
-            Get["/"] = parameters => View["index"];
-            Get["/index"] = parameters => View["index"];
-            Get["/home"] = parameters => View["index"];
-            Get["/about"] = parameters => View["about"];
-            Get["/test"] = parameters => View["test"];
 
+            Get["/"] = parameters =>
+            {
+                ViewBag.Title = "Home";
+                return View["index"];
+            };
+
+            Get["/contact"] = parameters =>
+            {
+                ViewBag.Method = "Insert";
+                return View["contact"];
+            };
+
+           
         }
     }
 }

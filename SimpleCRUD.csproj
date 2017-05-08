@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SimpleCRUD</RootNamespace>
     <AssemblyName>SimpleCRUD</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -172,11 +172,12 @@
     <Content Include="packages\Newtonsoft.Json.10.0.2\LICENSE.md" />
     <Content Include="packages\Newtonsoft.Json.10.0.2\Newtonsoft.Json.10.0.2.nupkg" />
     <Content Include="packages\Newtonsoft.Json.10.0.2\tools\install.ps1" />
-    <Content Include="Views\Index.cshtml" />
+    <Content Include="Views\contact.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
+    <Content Include="Views\index.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
