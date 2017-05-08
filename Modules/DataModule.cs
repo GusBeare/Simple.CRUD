@@ -20,7 +20,6 @@ namespace SimpleCRUD
 
                 // deserialise the json string from the form and convert to a dynamic object
                 var json = Request.Body.AsString();
-                
                 var jss = new JavaScriptSerializer();
                 var formRow = jss.Deserialize<dynamic>(json); // the data we get back is a dictionary
 
@@ -34,7 +33,7 @@ namespace SimpleCRUD
                         var db = Database.Open(); // open db with Simple.Data
 
 
-                        // switch on the method and modify the table
+                        // find the data method and modify the table
                         if (formRow.ContainsKey(KeyNameMethod))
                         {
                             string m = formRow[KeyNameMethod];
@@ -42,13 +41,13 @@ namespace SimpleCRUD
                             {
                                 case "insert":
                                     var newRow = db[tableName].Insert(formRow);
-                                    break;
+                                    return Response.AsText("The data was inserted successfully into table: " + tableName);
                                 case "update":
                                     db[tableName].update(formRow);
-                                    break;
+                                    return Response.AsText("The table: " + tableName + " was updated successfully!");
                                 case "delete":
                                     db[tableName].delete(formRow);
-                                    break;
+                                    return Response.AsText("The row was successfully deleted in table: " + tableName);
                             }
                         }   
                     }
@@ -62,7 +61,7 @@ namespace SimpleCRUD
                     return Response.AsText("Unexpected error: " + ex.Message);
                 }
 
-                return Response.AsText("The data was inserted successfully into table: " + tableName);
+                return Response.AsText("The operation was successful!" );
 
             };
         }
