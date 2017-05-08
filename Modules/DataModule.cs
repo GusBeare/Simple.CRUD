@@ -50,7 +50,8 @@ namespace SimpleCRUD
                                     var newRow = db[tableName].Insert(formRow);
                                     return Response.AsText("The data was inserted successfully into table: " + tableName);
                                 case "update":
-                                    // we need to remove tablename and method from the form
+                                   // we could remove tablename and method from the update data but we don't have to. Simple.Data ignores any that don't match the
+                                   // table
                                    // formRow.Remove(KeyNameTable);
                                    // formRow.Remove(KeyNameMethod);
                                     db[tableName].UpdateById(formRow);
