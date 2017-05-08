@@ -173,13 +173,13 @@
     <Content Include="packages\Newtonsoft.Json.10.0.2\Newtonsoft.Json.10.0.2.nupkg" />
     <Content Include="packages\Newtonsoft.Json.10.0.2\tools\install.ps1" />
     <Content Include="SQL\tbl_contactLog.sql" />
-    <Content Include="Views\contact.cshtml" />
+    <Content Include="Views\enquiry.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
     <Content Include="Views\index.cshtml" />
-    <Content Include="Views\product-list.cshtml" />
+    <Content Include="Views\enquiry-list.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

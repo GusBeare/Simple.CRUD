@@ -16,40 +16,32 @@ namespace SimpleCRUD
             };
 
             // load contact form
-            Get["/contact"] = p =>
+            Get["/enquiry"] = p =>
             {
                 ViewBag.Method = "insert";
-                return View["contact"];
+                return View["enquiry"];
             };
 
 
-
-            // read products
-            Get["/products"] = p =>
+            // read list of enquiries
+            Get["/enquiry-list"] = p =>
             {
                 ViewBag.Method = "read";
-                return View["product-list"];
+                return View["enquiry-list"];
             };
 
-            // insert a product
-            Get["/products/insert"] = p =>
-            {
-                ViewBag.Method = "create";
-                return View["products"];
-            };
-
-            // update a product
-            Get["/products/update"] = p =>
+            // update an enquiry
+            Get["/enquiry/update"] = p =>
             {
                 ViewBag.Method = "update";
-                return View["products"];
+                return View["enquiry"];
             };
 
-            // delete a product
-            Get["/products/insert"] = p =>
+            // delete an enquiry
+            Get["/enquiry/delete"] = p =>
             {
                 ViewBag.Method = "update";
-                return View["products"];
+                return View["enquiry"];
             };
 
         }

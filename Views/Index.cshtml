@@ -11,8 +11,7 @@
     <p>1. Take this table</p>
     <div class="col-md-12">
         <p>
-            <pre><code>
-CREATE TABLE contactLog (
+            <pre class="pre-scrollable"><code>CREATE TABLE contactLog (
     [Id] int identity not null,
     [Salutation] varchar(10) null,
     [Name] varchar(255) null,
@@ -33,8 +32,7 @@ CREATE TABLE contactLog (
         Here I am also adding in a lastupdated date field and setting the value to the current time with Razor code.</p>
     <p>We are  also sending in a method which our server can use to determine if we are doing an insert or update.</p>
 <div class="col-md-12">
-    <pre class="pre-scrollable"><code>
-&lt;form&gt;
+    <pre class="pre-scrollable"><code>&lt;form&gt;
     &lt;input name="tablename" type="hidden" value="contactlog"/&gt;
     &lt;input name="lastupdated" type="hidden" value="@@DateTime.Now"/&gt;
     &lt;input name="method" type="hidden" value="@@ViewBag.Method"/&gt;
@@ -65,8 +63,8 @@ CREATE TABLE contactLog (
     &lt;textarea id="message" name="message" rows="4" cols="60"&gt;&lt;/textarea&gt;
             
     &lt;button type="submit"&gt;Send It!&lt;/button&gt;
-&lt;/form&gt;
-        </code></pre></div>
+&lt;/form&gt;</code></pre>
+</div>
 </div>
 
 <div class="row">
