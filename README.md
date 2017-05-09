@@ -4,7 +4,7 @@
 
 We could make use of the dynamic features of C# to make CRUD simple and quick to implement.
 
-####1. Take this table
+### 1. Take this table
    
     CREATE TABLE contactLog (
         [ID] int identity not null,
@@ -16,7 +16,7 @@ We could make use of the dynamic features of C# to make CRUD simple and quick to
     
     
 
-####2. Build a form in a Razor template
+### 2. Build a form in a Razor template
 
 A few hidden fields can tell the back end what to do with our data.
 
