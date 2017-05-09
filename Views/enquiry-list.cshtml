@@ -17,13 +17,10 @@
          <div class="row">
              <div class="col-md-3">
                  <!-- Call generic read row route passing in tablename => contactlog), row id and view name => enquiry-->
-                 <a href="/data/readrow/contactlog/@row.Id/enquiry">@row.Salutation @row.Name</a>
+                 <a href="/data/readrow/contactlog/@row.Id/enquiry">@row.Name</a>
              </div>
              <div class="col-md-3">
                  @row.Email 
-             </div>
-             <div class="col-md-2">
-                 @row.Subject
              </div>
              <div class="col-md-2">
                  @row.Message

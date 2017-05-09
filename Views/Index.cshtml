@@ -11,15 +11,14 @@
     <h4>1. Take this table</h4>
     <div class="col-md-12">
         <p>
-            <pre class="pre-scrollable"><code>CREATE TABLE contactLog (
-    [Id] int identity not null,
-    [Salutation] varchar(10) null,
-    [Name] varchar(255) null,
-    [Email] varchar(255) null,
-    [Subject] varchar(255) null,
-    [Message] varchar(255) null,
-    [LastUpdated] datetime2 not null
-    );</code></pre>
+            <pre class="pre-scrollable">
+<code>CREATE TABLE contactLog (
+  [ID] int identity not null,
+  [Name] varchar(255) not null,
+  [Email] varchar(255) not null,
+  [Message] varchar(255) not null,
+  [LastUpdated] datetime2 not null);</code>
+</pre>
         </p>
     </div>
 
