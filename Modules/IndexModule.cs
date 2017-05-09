@@ -1,9 +1,4 @@
-﻿
-
-using System.Collections;
-using System.Collections.Generic;
-using System.Dynamic;
-using Simple.Data;
+﻿using Simple.Data;
 
 namespace SimpleCRUD
 {
@@ -29,15 +24,7 @@ namespace SimpleCRUD
             };
 
 
-            // get the enquiries and load the list view
-            Get["/enquiry-list"] = p =>
-            {
-                var db = Database.Open();
-                var uRows = db.contactlog.All().OrderByDescending(db.contactlog.LastUpdated);
-                
-                ViewBag.Method = "list";
-                return View["enquiry-list", uRows];
-            };
+          
 
         }
     }

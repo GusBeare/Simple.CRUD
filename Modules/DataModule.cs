@@ -14,6 +14,15 @@ namespace SimpleCRUD
 
         public DataModule()
         {
+            // get the enquiries and load the list view
+            Get["/enquiry-list"] = p =>
+            {
+                var db = Database.Open();
+                var uRows = db.contactlog.All().OrderByDescending(db.contactlog.LastUpdated);
+
+                ViewBag.Method = "list";
+                return View["enquiry-list", uRows];
+            };
 
             Get["/data/readrow/{table}/{Id}/{view}"] = p =>
             {

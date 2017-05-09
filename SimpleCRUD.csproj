@@ -61,10 +61,6 @@
       <HintPath>..\packages\Nancy.Viewengines.Razor.1.4.3\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ServiceStack.Text, Version=4.5.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\ServiceStack.Text.4.5.8\lib\net45\ServiceStack.Text.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Simple.Data, Version=0.19.0.0, Culture=neutral, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -75,7 +71,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -128,22 +126,6 @@
     <Content Include="packages\Nancy.Viewengines.Razor.1.4.3\BuildProviders\Nancy.ViewEngines.Razor.BuildProviders.XML" />
     <Content Include="packages\Nancy.Viewengines.Razor.1.4.3\lib\net40\Nancy.ViewEngines.Razor.dll" />
     <Content Include="packages\Nancy.Viewengines.Razor.1.4.3\lib\net40\Nancy.ViewEngines.Razor.xml" />
-    <Content Include="packages\Newtonsoft.Json.10.0.2\lib\net20\Newtonsoft.Json.dll" />
-    <Content Include="packages\Newtonsoft.Json.10.0.2\lib\net20\Newtonsoft.Json.xml" />
-    <Content Include="packages\Newtonsoft.Json.10.0.2\lib\net35\Newtonsoft.Json.dll" />
-    <Content Include="packages\Newtonsoft.Json.10.0.2\lib\net35\Newtonsoft.Json.xml" />
-    <Content Include="packages\Newtonsoft.Json.10.0.2\lib\net40\Newtonsoft.Json.dll" />
-    <Content Include="packages\Newtonsoft.Json.10.0.2\lib\net40\Newtonsoft.Json.xml" />
-    <Content Include="packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll" />
-    <Content Include="packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.xml" />
-    <Content Include="packages\Newtonsoft.Json.10.0.2\lib\netstandard1.0\Newtonsoft.Json.dll" />
-    <Content Include="packages\Newtonsoft.Json.10.0.2\lib\netstandard1.0\Newtonsoft.Json.xml" />
-    <Content Include="packages\Newtonsoft.Json.10.0.2\lib\netstandard1.3\Newtonsoft.Json.dll" />
-    <Content Include="packages\Newtonsoft.Json.10.0.2\lib\netstandard1.3\Newtonsoft.Json.xml" />
-    <Content Include="packages\Newtonsoft.Json.10.0.2\lib\portable-net40+sl5+win8+wpa81+wp8\Newtonsoft.Json.dll" />
-    <Content Include="packages\Newtonsoft.Json.10.0.2\lib\portable-net40+sl5+win8+wpa81+wp8\Newtonsoft.Json.xml" />
-    <Content Include="packages\Newtonsoft.Json.10.0.2\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll" />
-    <Content Include="packages\Newtonsoft.Json.10.0.2\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.xml" />
     <Content Include="packages\Simple.Data.Ado.0.19.0.0\lib\net40\Simple.Data.Ado.dll" />
     <Content Include="packages\Simple.Data.Core.0.19.0.0\lib\net40\Simple.Data.dll" />
     <Content Include="packages\Simple.Data.SqlServer.0.19.0.0\lib\net40\Simple.Data.SqlServer.dll" />
@@ -169,9 +151,6 @@
     <Content Include="packages\Simple.Data.Core.0.19.0.0\Simple.Data.Core.0.19.0.0.nupkg" />
     <Content Include="packages\Simple.Data.SqlServer.0.19.0.0\Simple.Data.SqlServer.0.19.0.0.nupkg" />
     <Content Include="packages\Nancy.Gzip.0.1.0\Nancy.Gzip.0.1.0.nupkg" />
-    <Content Include="packages\Newtonsoft.Json.10.0.2\LICENSE.md" />
-    <Content Include="packages\Newtonsoft.Json.10.0.2\Newtonsoft.Json.10.0.2.nupkg" />
-    <Content Include="packages\Newtonsoft.Json.10.0.2\tools\install.ps1" />
     <Content Include="SQL\tbl_contactLog.sql" />
     <Content Include="Views\enquiry.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
