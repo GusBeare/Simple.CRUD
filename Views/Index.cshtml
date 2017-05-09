@@ -8,74 +8,62 @@
 <div class="row">
     <h3>Simple.CRUD</h3>
     <p>Tired of writing the same old CRUD day after day? What if all we had to do was build an HTML form to perform CRUD on a given table?</p>
+    <p>We could make use of the dynamic features of C# to make CRUD simple and quicker to implement.</p>
     <h4>1. Take this table</h4>
     <div class="col-md-12">
-        <p>
-            <pre class="pre-scrollable">
-<code>CREATE TABLE contactLog (
-  [ID] int identity not null,
-  [Name] varchar(255) not null,
-  [Email] varchar(255) not null,
-  [Message] varchar(255) not null,
-  [LastUpdated] datetime2 not null);</code>
-</pre>
-        </p>
+        <p><pre class="pre-scrollable">
+        <code>CREATE TABLE contactLog (
+          [ID] int identity not null,
+          [Name] varchar(255) not null,
+          [Email] varchar(255) not null,
+          [Message] varchar(255) not null,
+          [LastUpdated] datetime2 not null
+        );</code>
+        </pre></p>
     </div>
-
-
 </div>
 
 <div class="row">
     <h4>2. Build a form in a Razor template</h4>
-    <p>If we add a few hidden fields we can tell the back end what to do with our form. Useful things such as the table name to modify. 
-        Here I am also adding in a lastupdated date field and setting the value to the current time with Razor code.</p>
-    <p>We are  also sending in a method which our server can use to determine if we are doing an insert or update.</p>
+    <p>A few hidden fields can tell the back end what to do with our data.</p>
 <div class="col-md-12">
-    <pre class="pre-scrollable"><code>&lt;form&gt;
-    &lt;input name="tablename" type="hidden" value="contactlog"/&gt;
-    &lt;input name="lastupdated" type="hidden" value="@@DateTime.Now"/&gt;
-    &lt;input name="method" type="hidden" value="@@ViewBag.Method"/&gt;
-                
-    &lt;input id="salutation-mr" name="salutation" type="radio" value="Mr."/&gt;
-    &lt;label for="salutation-mr"&gt;Mr.&lt;/label&gt;
-            
-    &lt;input id="salutation-mrs" name="salutation" type="radio" value="Mrs."/&gt;
-    &lt;label for="salutation-mrs"&gt;Mrs.&lt;/label&gt;
-            
-    &lt;input id="salutation-ms" name="salutation" type="radio" value="Ms."/&gt;
-    &lt;label for="salutation-ms"&gt;Ms.&lt;/label&gt;
-            
-    &lt;label for="name"&gt;Full Name&lt;/label&gt;
-    &lt;input id="name" name="name" type="text"/&gt;
-            
-    &lt;label for="email"&gt;Email Address&lt;/label&gt;
-    &lt;input id="email" name="email" type="email"/&gt;
-            
-    &lt;label for="subject"&gt;How can I help you?&lt;/label&gt;
-    &lt;select id="subject" name="subject"&gt;
-            &lt;option&gt;I need my head seeing to.&lt;/option&gt;
-            &lt;option&gt;I'm having a baby.&lt;/option&gt;
-            &lt;option&gt;I need help with my dead relative's estate.&lt;/option&gt;
-    &lt;/select&gt;
-            
-    &lt;label for="message"&gt;Enter a Message&lt;/label&gt;
-    &lt;textarea id="message" name="message" rows="4" cols="60"&gt;&lt;/textarea&gt;
-            
-    &lt;button type="submit"&gt;Send It!&lt;/button&gt;
+    <pre class="pre-scrollable"><code>&lt;form class="contact-form"&gt;     
+    &lt;!-- hidden fields that hold variables for the server --&gt;
+    &lt;input name="Id" type="hidden" value="@@if(Model!=null){@@Model.Id}" /&gt;
+    &lt;input name="tablename" type="hidden" value="contactlog" /&gt;
+    &lt;input name="lastupdated" type="hidden" value="@@DateTime.Now" /&gt;
+    &lt;input name="method" type="hidden" value="@@ViewBag.Method" /&gt;
+      
+    &lt;div class="form-group"&gt;
+        &lt;label for="name"&gt;Full Name&lt;/label&gt;
+        &lt;input class="form-control" id="name" name="name" value="@@if(Model!=null){@@Model.Name}" type="text" /&gt;
+    &lt;/div&gt;                                                                                 
+    &lt;div class="form-group"&gt;
+        &lt;label for="email"&gt;Email Address&lt;/label&gt;
+        &lt;input class="form-control" id="email" name="email" type="email" value="@@if(Model!=null){@@Model.Email}" /&gt;
+    &lt;/div&gt;                                                                                       
+    &lt;div class="form-group"&gt;
+        &lt;label for="message"&gt;Enter a Message&lt;/label&gt;
+        &lt;textarea class="form-control" id="message" name="message" rows="4" cols="60"&gt;
+            @@if (Model != null){@@Model.Message}
+        &lt;/textarea&gt;
+    &lt;/div&gt;
+    &lt;button class="btn btn-primary" type="submit"&gt;Save!&lt;/button&gt;
 &lt;/form&gt;</code></pre>
 </div>
 </div>
 
 <div class="row">
-    <p>We could have a tiny js file to handle the serialisation and post. </p>
+    <p>Add a tiny js file to handle the serialisation and post. </p>
     <pre><code>&lt;script src="Content/js/formPost.js"&gt;&lt;/script&gt;</code></pre>
+    <p>Thanks to <a href="https://code.lengstorf.com/get-form-values-as-json/">Jason Lengstorf</a> for this great code which means we can painlessly 
+    grab the form data and put it into a json object for to the server.</p>
 </div>
 
 
 <div class="row">
-    <p>We could use Nancy and Simple.Data to take the form data and insert it into the table defined by the form. Using dynamic objects we can avoid data models in our server code. 
-        If we need to change the table later we only need change the table and form.</p>
-    <p>If we need table specific rules we can switch on the table name at the back end.</p>
+    <p>With Nancy and Simple.Data we can have generic routes that take a table name and a method and do a CRUD operation on that table.
+    <br/>
     <p>This simple app is a proof of concept for that idea.</p>
 </div>
 

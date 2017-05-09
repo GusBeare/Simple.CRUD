@@ -20,21 +20,22 @@ namespace SimpleCRUD
                 return View["index"];
             };
 
-            // load contact form
+            // load enquiry form
             Get["/enquiry"] = p =>
             {
-                ViewBag.Method = "insert";
+                ViewBag.FormTitle = "Enter Enquiry";
+                ViewBag.Method = "insert"; // for the back end to process the post as an INSERT
                 return View["enquiry"];
             };
 
 
-            // read list of enquiries
+            // get the enquiries and load the list view
             Get["/enquiry-list"] = p =>
             {
                 var db = Database.Open();
                 var uRows = db.contactlog.All().OrderByDescending(db.contactlog.LastUpdated);
-
-                ViewBag.Method = "List";
+                
+                ViewBag.Method = "list";
                 return View["enquiry-list", uRows];
             };
 

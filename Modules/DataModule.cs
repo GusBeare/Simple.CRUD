@@ -17,6 +17,7 @@ namespace SimpleCRUD
 
             Get["/data/readrow/{table}/{Id}/{view}"] = p =>
             {
+                ViewBag.FormTitle = "Edit Enquiry";
                 ViewBag.Method = "update";
                 var db = Database.Open();
                 var uRow = db[p.table].FindById(p.Id);
@@ -72,7 +73,7 @@ namespace SimpleCRUD
                     return Response.AsText("Unexpected error: " + ex.Message);
                 }
 
-                return Response.AsText("The operation was successful!" );
+                return Response.AsText("Data operation succeeded!" );
 
             };
         }
