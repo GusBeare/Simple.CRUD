@@ -7,5 +7,3 @@ CREATE TABLE contactLog (
     [Message] varchar(255) not null,
 	[LastUpdated] datetime2 not null
 );
-
-select * from contactlog
