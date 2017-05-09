@@ -4,7 +4,7 @@
 
 We could make use of the dynamic features of C# to make CRUD simple and quick to implement.
 
-### 1. Take this table
+### Take this table
    
     CREATE TABLE contactLog (
         [ID] int identity not null,
@@ -16,7 +16,7 @@ We could make use of the dynamic features of C# to make CRUD simple and quick to
     
     
 
-### 2. Build a form in a Razor template
+### Build a form in a Razor template
 
 A few hidden fields can tell the back end what to do with our data.
 
@@ -58,5 +58,12 @@ There are no concrete classes, models or view models. You don't have to fiddle a
 I am going to call this pattern VDV (View Data View). VD didn't sound right for some reason...
 
 The wisdom <i>or not</i> of this idea eludes me for now. But it was fun building it.
+
+### Run the App
+
+1. You need SQL Server and Visual Studio 2015 Community
+1. Create the table in this script /SQL/tbl_contactLog.sql 
+2. Edit the web.config connection string to point to your DB.
+
 
 
