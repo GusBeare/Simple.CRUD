@@ -1,4 +1,4 @@
-<h1 style="color: #006838">Simple.CRUD</h1>
+# Simple.CRUD
 
  Tired of writing the same old CRUD day after day? What if all we had to do was build an HTML form to perform CRUD on a given table?
 
@@ -51,7 +51,12 @@ Add a tiny js file to handle the form serialisation and post.
 Thanks to <a href="https://code.lengstorf.com/get-form-values-as-json/">Jason Lengstorf</a> for this great javascript code that made the Ajax bit a breeze.
 
 
-With Nancy and Simple.Data we can have generic routes that take a table name and a method and do a CRUD operation on that table.
+The idea was to use [NancyFx](http://nancyfx.org/ "Nancy Fx") and [Simple.Data](http://simplefx.org/simpledata/docs/ "Simple.Data") to create generic routes that handle form data dynamically.
 
-This app is a proof of concept for that idea.
+There are no concrete classes, models or view models. You don't have to fiddle about with Javascript options for each form. The Javascript is so light you can include it in the layout. It is generic and needs no config. It just needs a single server route to post data to.
+
+I am going to call this pattern VDV (View Data View) pattern. VD didn't sound right for some reason...
+
+The wisdom <i>or not</i> of this idea eludes me for now. But it was fun building it.
+
 
