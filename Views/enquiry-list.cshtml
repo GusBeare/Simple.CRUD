@@ -16,7 +16,8 @@
      {
          <div class="row">
              <div class="col-md-3">
-                 <a href="/data/readrow/contactlog/@row.Id">@row.Salutation @row.Name</a>  
+                 <!-- Call generic read row route passing in tablename => contactlog), row id and view name => enquiry-->
+                 <a href="/data/readrow/contactlog/@row.Id/enquiry">@row.Salutation @row.Name</a>
              </div>
              <div class="col-md-3">
                  @row.Email 

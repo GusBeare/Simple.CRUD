@@ -15,12 +15,12 @@ namespace SimpleCRUD
         public DataModule()
         {
 
-            Get["/data/readrow/{table}/{Id}"] = p =>
+            Get["/data/readrow/{table}/{Id}/{view}"] = p =>
             {
                 ViewBag.Method = "update";
                 var db = Database.Open();
                 var uRow = db[p.table].FindById(p.Id);
-                return View["enquiry",uRow];
+                return View[p.view,uRow];
             };
 
             Post["/data/modify"] = parameters =>
