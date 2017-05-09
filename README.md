@@ -55,7 +55,7 @@ The idea was to use [NancyFx](http://nancyfx.org/ "Nancy Fx") and [Simple.Data](
 
 There are no concrete classes, models or view models. You don't have to fiddle about with Javascript options for each form. The Javascript is so light you can include it in the layout. It is generic and needs no config. It just needs a single server route to post data to.
 
-I am going to call this pattern VDV (View Data View) pattern. VD didn't sound right for some reason...
+I am going to call this pattern VDV (View Data View). VD didn't sound right for some reason...
 
 The wisdom <i>or not</i> of this idea eludes me for now. But it was fun building it.
 
