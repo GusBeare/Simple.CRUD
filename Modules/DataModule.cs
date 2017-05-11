@@ -33,7 +33,7 @@ namespace SimpleCRUD
                 return View[p.view,uRow];
             };
 
-            Post["/data/modify"] = parameters =>
+            Post["/data/modify"] = p =>
             {
                 // deserialise the json string from the form and convert to a dynamic object
                 var json = Request.Body.AsString();
