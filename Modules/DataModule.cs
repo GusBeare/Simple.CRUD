@@ -2,6 +2,7 @@
 using Nancy.Extensions;
 using Nancy;
 using Nancy.Json;
+using Nancy.Security;
 using Simple.Data;
 
 
@@ -35,6 +36,16 @@ namespace SimpleCRUD
 
             Post["/data/modify"] = p =>
             {
+                // validate CSRF token
+                try
+                {
+                    this.ValidateCsrfToken();
+                }
+                catch (CsrfValidationException)
+                {
+                    return Response.AsText("Csrf Token not valid. Form not submitted!").WithStatusCode(403);
+                }
+
                 // deserialise the json string from the form and convert to a dynamic object
                 var json = Request.Body.AsString();
                 var jss = new JavaScriptSerializer();

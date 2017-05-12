@@ -136,8 +136,20 @@ var handleFormSubmit = function handleFormSubmit(event) {
     var url = "/data/modify";
     http.open("POST", url, true);
 
+    var token;
+    for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+            if (key === 'NCSRF') {
+                token = data[key];
+                // console.log(token)
+            }
+        }
+    }
+
     // Send the proper header information along with the request
     http.setRequestHeader("Content-type", "application/json");
+
+    http.setRequestHeader("NCSRF", token);
 
     http.onreadystatechange = function () { //Call a function when the state changes.
         if (http.readyState === 4 && http.status === 200) {
@@ -146,9 +158,14 @@ var handleFormSubmit = function handleFormSubmit(event) {
             responseContainer.textContent = http.responseText;
            
         } 
+        else if (http.readyState === 2 && http.status === 403) {
+
+            var responseContainer = document.getElementsByClassName('response_display')[0];
+            responseContainer.textContent = http.responseText;
+        }
     }
         
-    console.log(JSON.stringify(data, null, "  "));
+    // console.log(JSON.stringify(data, null, "  "));
     http.send(JSON.stringify(data, null, "  "));
 };
 

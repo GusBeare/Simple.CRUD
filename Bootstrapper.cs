@@ -15,6 +15,9 @@ namespace SimpleCRUD
             pipelines.EnableGzipCompression();
 
             base.ApplicationStartup(container, pipelines);
+
+            // enable CSRF
+            Nancy.Security.Csrf.Enable(pipelines);
         }
     }
 }

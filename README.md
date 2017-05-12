@@ -57,7 +57,10 @@ There are no concrete classes, models or view models. You don't have to fiddle a
 
 I am going to call this pattern VDV (View Data View). VD didn't sound right for some reason...
 
-The wisdom <i>or not</i> of this idea eludes me for now. But it was fun building it.
+The wisdom <i>or not</i> of this idea needs further experimentation and thought. I don't know at this point if this idea is useful or not but it was fun building it. 
+
+The main issues that I will consider next are server side validation and security. Passing the table name from the client is not necessarily a good idea.
+If a client can edit more that one table they can potentially change the table name and update data in a different table.
 
 ### Run the App
 
