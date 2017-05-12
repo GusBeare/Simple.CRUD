@@ -158,4 +158,9 @@ var handleFormSubmit = function handleFormSubmit(event) {
  * `submit` event.
  */
 var form = document.getElementsByClassName('contact-form')[0];
-form.addEventListener('submit', handleFormSubmit);
+
+// only try to attach if a form was found
+if (typeof (form) != 'undefined' && form != null) {
+    form.addEventListener('submit', handleFormSubmit);
+}
+
