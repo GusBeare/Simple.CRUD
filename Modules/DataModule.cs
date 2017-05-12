@@ -36,10 +36,10 @@ namespace SimpleCRUD
 
             Post["/data/modify"] = p =>
             {
-                // validate CSRF token
+                // this should be moved either into a Base module or a before hook
                 try
                 {
-                    this.ValidateCsrfToken();
+                    this.ValidateCsrfToken(); // validate CSRF token. The token is passed in the header by the js 
                 }
                 catch (CsrfValidationException)
                 {
