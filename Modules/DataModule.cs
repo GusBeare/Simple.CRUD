@@ -48,9 +48,8 @@ namespace SimpleCRUD
 
                 // deserialise the json string from the form and convert to a dynamic object
                 var json = Request.Body.AsString();
-                var jss = new JavaScriptSerializer();
-                var formRow = jss.Deserialize<dynamic>(json); // the data we get back is a dictionary
-
+                var formRow = new JavaScriptSerializer().Deserialize<dynamic>(json);
+              
                 try
                 {
                     
