@@ -1,4 +1,5 @@
 ﻿using Nancy.Bootstrapper;
+using Nancy.Cryptography;
 using Nancy.Gzip;
 using Nancy.TinyIoc;
 
@@ -8,7 +9,8 @@ namespace SimpleCRUD
 
     public class Bootstrapper : DefaultNancyBootstrapper
     {
-        
+        //public CryptographyConfiguration Configuration { get; set; }
+
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
             // Enable Compression with Default Settings
@@ -18,6 +20,7 @@ namespace SimpleCRUD
 
             // enable CSRF
             Nancy.Security.Csrf.Enable(pipelines);
-        }
+        }  
     }
+
 }

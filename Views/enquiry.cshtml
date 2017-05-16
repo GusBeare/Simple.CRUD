@@ -12,10 +12,10 @@
 <div class="row">
 <form class="contact-form">     
     <!-- hidden fields that hold variables for the server -->
-    <input name="Id" type="hidden" value="@if(Model!=null){@Model.Id}" />
-    <input name="tablename" type="hidden" value="contactlog" />
-    <input name="lastupdated" type="hidden" value="@DateTime.Now" />
-    <input name="method" type="hidden" value="@ViewBag.Method" />
+    <input name="Id" type="hidden" readonly value="@if(Model!=null){@Model.Id}" />
+    <input name="tablename" type="hidden" readonly value="@ViewBag.TableName" />
+    <input name="lastupdated" type="hidden" readonly value="@DateTime.Now" />
+    <input name="method" type="hidden" readonly value="@ViewBag.Method" />
       
     <div class="form-group">
         <label for="name">Full Name</label>

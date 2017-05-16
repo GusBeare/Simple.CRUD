@@ -1,6 +1,7 @@
 ﻿using System;
 using Nancy.Extensions;
 using Nancy;
+using Nancy.Cryptography;
 using Nancy.Json;
 using Nancy.Security;
 using Simple.Data;
@@ -56,15 +57,19 @@ namespace SimpleCRUD
                     // find the table name in the dynamic dictionary. There must always be one
                     if (formRow.ContainsKey(KeyNameTable))
                     {
-                        string tableName = formRow[KeyNameTable];
+                        // decrypt the table name and method
+                        var ec = CryptographyConfiguration.Default;
+                       
+                        string tableName = ec.EncryptionProvider.Decrypt(formRow[KeyNameTable]);
+                        string method = ec.EncryptionProvider.Decrypt(formRow[KeyNameMethod]);
+
                         var db = Database.Open(); // open db with Simple.Data
 
 
                         // find the data method and modify the table
                         if (formRow.ContainsKey(KeyNameMethod))
                         {
-                            string m = formRow[KeyNameMethod];
-                            switch (m)
+                            switch (method)
                             {
                                 case "insert":
                                     var newRow = db[tableName].Insert(formRow);
@@ -96,5 +101,6 @@ namespace SimpleCRUD
 
             };
         }
+
     }
 }
