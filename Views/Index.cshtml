@@ -27,7 +27,7 @@
     <h4>2. Build a form in a Razor template</h4>
     <p>A few hidden fields can tell the back end what to do with our data.</p>
 <div class="col-md-12">
-    <pre class="pre-scrollable"><code>&lt;form class="contact-form"&gt;     
+    <pre class="pre-scrollable"><code>&lt;form class="crud-form"&gt;     
     &lt;!-- hidden fields that hold variables for the server --&gt;
     &lt;input name="Id" type="hidden" value="@@if(Model!=null){@@Model.Id}" /&gt;
     &lt;input name="tablename" type="hidden" value="contactlog" /&gt;

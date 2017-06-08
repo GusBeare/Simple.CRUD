@@ -20,7 +20,7 @@ We could make use of the dynamic features of C# to make CRUD simple and quick to
 
 A few hidden fields can tell the back end what to do with our data.
 
-    <form class="contact-form">     
+    <form class="crud-form">     
     <!-- hidden fields that hold variables for the server -->
     <input name="Id" type="hidden" value="@if(Model!=null){@Model.Id}" />
     <input name="tablename" type="hidden" value="contactlog" />

@@ -1,7 +1,6 @@
 ﻿using System;
 using Nancy.Extensions;
 using Nancy;
-using Nancy.Cryptography;
 using Nancy.Json;
 using Nancy.Security;
 using Simple.Data;

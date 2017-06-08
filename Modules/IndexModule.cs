@@ -1,6 +1,4 @@
-﻿using System.Dynamic;
-using Nancy;
-using Nancy.Cryptography;
+﻿using Nancy;
 
 
 namespace SimpleCRUD
@@ -19,16 +17,9 @@ namespace SimpleCRUD
             // load enquiry form
             Get["/enquiry"] = p =>
             {
-                //var rkg = new RandomKeyGenerator();
-                //var key = rkg.GetBytes(4);
-
-                var ec = CryptographyConfiguration.Default;
-                var tableNameProtected = ec.EncryptionProvider.Encrypt("contactlog");
-                var methodProtected = ec.EncryptionProvider.Encrypt("insert");
-
-                ViewBag.TableName = tableNameProtected;
+                ViewBag.TableName = "contactlog"; // the table associated with the form
                 ViewBag.FormTitle = "Enter Enquiry";
-                ViewBag.Method = methodProtected; // for the back end to process the post as an INSERT
+                ViewBag.Method = "insert"; // for the back end to process the post as an INSERT
                 return View["enquiry"];
             };
         }
