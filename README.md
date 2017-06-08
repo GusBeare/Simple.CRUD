@@ -65,6 +65,9 @@ The main issue that I will consider next is server side validation and security.
 However it is common practice in MVC to call routes such as this /product/update/Id. So why not pass the table name and data method in from the HTML form?
 As long as the current user is authenticated we can then check if they have permission to do the operation as part of the server side validation which we'd be doing anyway.
 
+Another area that needs work is the responses that come back from the back end. These should enable the client code to determine the styling of the message. 
+Something like red for an error or blue for success.
+
 ### To run the app
 
 1. You need SQL Server and Visual Studio 2015 Community
