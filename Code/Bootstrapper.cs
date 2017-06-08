@@ -1,5 +1,4 @@
 ﻿using Nancy.Bootstrapper;
-using Nancy.Cryptography;
 using Nancy.Gzip;
 using Nancy.TinyIoc;
 
@@ -20,6 +19,8 @@ namespace SimpleCRUD
 
             // enable CSRF
             Nancy.Security.Csrf.Enable(pipelines);
+
+          
         }  
     }
 
