@@ -51,21 +51,24 @@ Add a tiny js file to handle the form serialisation and post.
 Thanks to <a href="https://code.lengstorf.com/get-form-values-as-json/">Jason Lengstorf</a> for this great javascript code that made the Ajax bit a breeze.
 
 
-The idea was to use [NancyFx](http://nancyfx.org/ "Nancy Fx") and [Simple.Data](http://simplefx.org/simpledata/docs/ "Simple.Data") to create generic routes that handle form data dynamically.
+The idea was to use [NancyFx](http://nancyfx.org/ "Nancy Fx") and [Simple.Data](http://simplefx.org/simpledata/docs/ "Simple.Data") to create a few generic routes that 
+can handle form data dynamically.
 
-There are no concrete classes, models or view models. You don't have to fiddle about with Javascript options for each form. The Javascript is so light you can include it in the layout. It is generic and needs no config. It just needs a single server route to post data to.
+There are no concrete classes, models or view models. You don't have to fiddle about with Javascript options for each form. The Javascript is so light you can include it in the layout. 
+It is generic and needs no config. The js code just needs a server route to submit the data via Ajax post.
 
 I am going to call this pattern VDV (View Data View). VD didn't sound right for some reason...
 
-The wisdom <i>or not</i> of this idea needs further experimentation and thought. I don't know at this point if this idea is useful or not but it was fun building it. 
+I am not sure if this idea is useful or not but it was fun building it. 
 
-The main issues that I will consider next are server side validation and security. Passing the table name from the client is not necessarily a good idea.
-If a client can edit more that one table they can potentially change the table name and update data in a different table.
+The main issue that I will consider next is server side validation and security. Passing the table name from the client is not necessarily a good idea.
+However it is common practice in MVC to call routes such as this /product/update/Id. So why not pass the table name and data method in from the HTML form?
+As long as the current user is authenticated we can then check if they have permission to do the operation as part of the server side validation which we'd be doing anyway.
 
-### Run the App
+### To run the app
 
 1. You need SQL Server and Visual Studio 2015 Community
-1. Create the table in this script /SQL/tbl_contactLog.sql 
+1. Create the table by running in the script found in the solution here:  /SQL/tbl_contactLog.sql 
 2. Edit the web.config connection string to point to your DB.
 
 

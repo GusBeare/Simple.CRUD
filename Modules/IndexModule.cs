@@ -1,4 +1,5 @@
-﻿using Nancy;
+﻿using System.Dynamic;
+using Nancy;
 using Nancy.Cryptography;
 
 
@@ -18,7 +19,9 @@ namespace SimpleCRUD
             // load enquiry form
             Get["/enquiry"] = p =>
             {
-                
+                //var rkg = new RandomKeyGenerator();
+                //var key = rkg.GetBytes(4);
+
                 var ec = CryptographyConfiguration.Default;
                 var tableNameProtected = ec.EncryptionProvider.Encrypt("contactlog");
                 var methodProtected = ec.EncryptionProvider.Encrypt("insert");

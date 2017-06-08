@@ -30,6 +30,7 @@ namespace SimpleCRUD
             {
                 ViewBag.FormTitle = "Edit Enquiry";
                 ViewBag.Method = "update";
+                ViewBag.TableName = p.table;
                 var db = Database.Open();
                 var uRow = db[p.table].FindById(p.Id);
                 return View[p.view,uRow];
@@ -57,11 +58,13 @@ namespace SimpleCRUD
                     // find the table name in the dynamic dictionary. There must always be one
                     if (formRow.ContainsKey(KeyNameTable))
                     {
-                        // decrypt the table name and method
-                        var ec = CryptographyConfiguration.Default;
-                       
-                        string tableName = ec.EncryptionProvider.Decrypt(formRow[KeyNameTable]);
-                        string method = ec.EncryptionProvider.Decrypt(formRow[KeyNameMethod]);
+
+                        string tableName = formRow[KeyNameTable];
+                        string method = formRow[KeyNameMethod];
+
+                        //  Here we need to check if the current user has permission to do the given operation on the table
+                        //  Something like:-
+                        //  If(!UserHasPermission(tablename, method) return Response.AsText("Unexpected error: User does not have permission to do that!");;
 
                         var db = Database.Open(); // open db with Simple.Data
 
@@ -73,19 +76,24 @@ namespace SimpleCRUD
                             {
                                 case "insert":
                                     var newRow = db[tableName].Insert(formRow);
-                                    return Response.AsText("The data was inserted successfully into table: " + tableName);
+                                    return Response.AsText(
+                                        "The data was inserted successfully into table: " + tableName);
                                 case "update":
-                                   // we could remove tablename and method from the update data but we don't have to. Simple.Data ignores any that don't match the
-                                   // table
-                                   // formRow.Remove(KeyNameTable);
-                                   // formRow.Remove(KeyNameMethod);
+                                    // we could remove tablename and method from the update data but we don't have to. Simple.Data ignores any that don't match the
+                                    // table
+                                    // formRow.Remove(KeyNameTable);
+                                    // formRow.Remove(KeyNameMethod);
                                     db[tableName].UpdateById(formRow);
                                     return Response.AsText("The table: " + tableName + " was updated successfully!");
                                 case "delete":
                                     db[tableName].delete(formRow);
                                     return Response.AsText("The row was successfully deleted in table: " + tableName);
                             }
-                        }   
+                        }
+                    }
+                    else
+                    {
+                        return Response.AsText("Unexpected error: Table name was not found!");
                     }
 
 
