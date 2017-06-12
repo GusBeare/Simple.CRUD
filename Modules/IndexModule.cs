@@ -1,5 +1,6 @@
 ﻿using Nancy;
-
+using MarkdownDeep;
+using System.IO;
 
 namespace SimpleCRUD
 {
@@ -10,7 +11,13 @@ namespace SimpleCRUD
 
             Get["/"] = p =>
             {
+
+                var md = new Markdown();
+                var template = File.ReadAllText(System.Web.HttpContext.Current.Server.MapPath("~/README.md") );
+
+                var output = md.Transform(template);
                 ViewBag.Title = "Home";
+                ViewBag.html = output;
                 return View["index"];
             };
 
