@@ -133,7 +133,7 @@ var handleFormSubmit = function handleFormSubmit(event) {
 
     // Post the data to our handler
     var http = new XMLHttpRequest();
-    var url = "/data/modify";
+    const url = "/data/modify";
     http.open("POST", url, true);
 
     var token;
@@ -148,7 +148,6 @@ var handleFormSubmit = function handleFormSubmit(event) {
 
     // Send the proper header information along with the request
     http.setRequestHeader("Content-type", "application/json");
-
     http.setRequestHeader("NCSRF", token);
 
     http.onreadystatechange = function () { //Call a function when the state changes.
