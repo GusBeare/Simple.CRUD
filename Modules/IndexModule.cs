@@ -17,7 +17,7 @@ namespace SimpleCRUD
 
                 var output = md.Transform(template);
                 ViewBag.Title = "Home";
-                ViewBag.html = output;
+                ViewBag.HTML = output;
                 return View["index"];
             };
 
