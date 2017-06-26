@@ -15,7 +15,7 @@ namespace SimpleCRUD
 
         public DataModule()
         {
-            // get a list and load the list view
+            // get a list from a table and load a view
             Get["/readlist/{tablename}/{sortcolumn}/{view}"] = p =>
             {
                 var db = Database.Open();
@@ -25,6 +25,7 @@ namespace SimpleCRUD
                 return View[p.view, uRows];
             };
 
+            // get a list from a table and load a view
             Get["/data/readrow/{table}/{Id}/{view}"] = p =>
             {
                 ViewBag.FormTitle = "Edit Enquiry";
@@ -34,7 +35,7 @@ namespace SimpleCRUD
                 var uRow = db[p.table].FindById(p.Id);
                 return View[p.view,uRow];
             };
-
+            
             Post["/data/modify"] = p =>
             {
                 // this should be moved either into a Base module or a before hook
@@ -57,13 +58,12 @@ namespace SimpleCRUD
                     // find the table name in the dynamic dictionary. There must always be one
                     if (formRow.ContainsKey(KeyNameTable))
                     {
-
                         string tableName = formRow[KeyNameTable];
                         string method = formRow[KeyNameMethod];
 
                         //  Here we need to check if the current user has permission to do the given operation on the table
                         //  Something like:-
-                        //  If(!UserHasPermission(tablename, method) return Response.AsText("Unexpected error: User does not have permission to do that!");;
+                        //  If(!UserHasPermission(tablename, method) return Response.AsText("Unexpected error: User does not have permission to do that!");
 
                         var db = Database.Open(); // open db with Simple.Data
 
@@ -74,19 +74,27 @@ namespace SimpleCRUD
                             switch (method)
                             {
                                 case "insert":
+                                    // here we need to validate the data
+                                    // If(!DataValid(tablename, method) return Response.AsText("Unexpected error: Data failed validation!");
                                     var newRow = db[tableName].Insert(formRow);
                                     return Response.AsText(
                                         "The data was inserted successfully into table: " + tableName);
+
                                 case "update":
+                                    
+                                    // here we need to validate the data
+                                    // If(!DataValid(tablename, method) return Response.AsText("Unexpected error: Data failed validation!");
+
                                     // we could remove tablename and method from the update data but we don't have to. Simple.Data ignores any that don't match the
                                     // table
                                     // formRow.Remove(KeyNameTable);
                                     // formRow.Remove(KeyNameMethod);
                                     db[tableName].UpdateById(formRow);
                                     return Response.AsText("The table: " + tableName + " was updated successfully!");
+
                                 case "delete":
                                     db[tableName].delete(formRow);
-                                    return Response.AsText("The row was successfully deleted in table: " + tableName);
+                                    return Response.AsText("The row was successfully deleted from table: " + tableName);
                             }
                         }
                     }
