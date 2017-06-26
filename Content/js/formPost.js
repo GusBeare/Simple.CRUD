@@ -59,7 +59,7 @@ function getSelectValues(options) {
  */
 function formToJSON_deconstructed(elements) {
     // This is the function that is called on each element of the array.
-    var reducerFunction = function reducerFunction(data, element) {
+    var reducerFunction = function (data, element) {
         // Add the current field to the object.
         data[element.name] = element.value;
         // For the demo only: show each step in the reducer’s progress.

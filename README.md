@@ -52,7 +52,7 @@ Add a tiny js file to handle the form serialisation and post.
 
     <script src="~/Content/js/formPost.js"></script>
 
-Note: I have switched this to a Typescript file so I can use new Javascript features and transpile down to es5. On build the Typescript is transpiled to
+Note: I have switched this to a Typescript file: `formPost.ts` so I can use new Javascript features and transpile down to es5. On build the Typescript is transpiled to
 the es5 version as `formPost.js`.
 
 For the server API I am using [NancyFx](http://nancyfx.org/ "Nancy Fx") and [Simple.Data](http://simplefx.org/simpledata/docs/ "Simple.Data") to create a few generic routes to do the CRUD.

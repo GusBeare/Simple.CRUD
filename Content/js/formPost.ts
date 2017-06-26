@@ -11,7 +11,7 @@ const RESULTS_CONTAINER = "results_display";
  * @@param  {Element} element  the element to check
  * @@return {Bool}             true if the element is an input, false if not
  */
-function isValidElement(element) {
+function isValidElement(element: HTMLInputElement) {
     return element.name && element.value;
 };
 
@@ -20,7 +20,7 @@ function isValidElement(element) {
  * @@param  {Element} element  the element to check
  * @@return {Boolean}          true if the value should be added, false if not
  */
-function isValidValue(element) {
+function isValidValue(element: HTMLInputElement) {
     return !['checkbox', 'radio'].includes(element.type) || element.checked;
 };
 
@@ -29,7 +29,7 @@ function isValidValue(element) {
  * @@param  {Element} element  the element to check
  * @@return {Boolean}          true if the element is a checkbox, false if not
  */
-function isCheckbox(element) {
+function isCheckbox(element: HTMLInputElement) {
     return element.type === 'checkbox';
 };
 
@@ -38,7 +38,7 @@ function isCheckbox(element) {
  * @@param  {Element} element  the element to check
  * @@return {Boolean}          true if the element is a multiselect, false if not
  */
-function isMultiSelect(element) {
+function isMultiSelect(element: HTMLSelectElement) {
     return element.options && element.multiple;
 };
 
@@ -47,7 +47,7 @@ function isMultiSelect(element) {
  * @@param  {HTMLOptionsCollection} options  the options for the select
  * @@return {Array}                          an array of selected option values
  */
-function getSelectValues(options) {
+function getSelectValues(options: HTMLInputElement) {
     return [].reduce.call(options, (values, option) => option.selected ? values.concat(option.value) : values, []);
 };
 
@@ -60,10 +60,10 @@ function getSelectValues(options) {
  * @@param  {HTMLFormControlsCollection} elements  the form elements
  * @@return {Object}                               form data as an object literal
  */
-function formToJSON_deconstructed(elements) {
+function formToJSON_deconstructed(elements: any) {
 
     // This is the function that is called on each element of the array.
-    const reducerFunction = function reducerFunction(data, element) {
+    const reducerFunction = (data, element) => {
 
         // Add the current field to the object.
         data[element.name] = element.value;
@@ -92,7 +92,7 @@ function formToJSON_deconstructed(elements) {
  * @@param  {HTMLFormControlsCollection} elements  the form elements
  * @@return {Object}                               form data as an object literal
  */
-function formToJSON(elements) {
+function formToJSON(elements: any) {
     return [].reduce.call(elements, (data, element) => {
 
         // Make sure the element has the required properties and should be added.
@@ -120,7 +120,8 @@ function formToJSON(elements) {
  * @@param  {Event} event  the submit event triggered by the user
  * @@return {void}
  */
-function handleFormSubmit(event) {
+function handleFormSubmit(event)
+    : void {
 
     // Stop the form from submitting since we’re handling that with AJAX.
     event.preventDefault();
