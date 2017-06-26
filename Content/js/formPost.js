@@ -6,7 +6,7 @@
  * @@param  {Element} element  the element to check
  * @@return {Bool}             true if the element is an input, false if not
  */
-var isValidElement = function isValidElement(element) {
+function isValidElement(element) {
     return element.name && element.value;
 };
 
@@ -15,7 +15,7 @@ var isValidElement = function isValidElement(element) {
  * @@param  {Element} element  the element to check
  * @@return {Boolean}          true if the value should be added, false if not
  */
-var isValidValue = function isValidValue(element) {
+function isValidValue(element) {
     return !['checkbox', 'radio'].includes(element.type) || element.checked;
 };
 
@@ -24,7 +24,7 @@ var isValidValue = function isValidValue(element) {
  * @@param  {Element} element  the element to check
  * @@return {Boolean}          true if the element is a checkbox, false if not
  */
-var isCheckbox = function isCheckbox(element) {
+function isCheckbox(element) {
     return element.type === 'checkbox';
 };
 
@@ -33,7 +33,7 @@ var isCheckbox = function isCheckbox(element) {
  * @@param  {Element} element  the element to check
  * @@return {Boolean}          true if the element is a multiselect, false if not
  */
-var isMultiSelect = function isMultiSelect(element) {
+function isMultiSelect(element) {
     return element.options && element.multiple;
 };
 
@@ -42,7 +42,7 @@ var isMultiSelect = function isMultiSelect(element) {
  * @@param  {HTMLOptionsCollection} options  the options for the select
  * @@return {Array}                          an array of selected option values
  */
-var getSelectValues = function getSelectValues(options) {
+function getSelectValues(options) {
     return [].reduce.call(options, function (values, option) {
         return option.selected ? values.concat(option.value) : values;
     }, []);
@@ -57,10 +57,10 @@ var getSelectValues = function getSelectValues(options) {
  * @@param  {HTMLFormControlsCollection} elements  the form elements
  * @@return {Object}                               form data as an object literal
  */
-var formToJSON_deconstructed = function formToJSON_deconstructed(elements) {
+function formToJSON_deconstructed(elements) {
 
     // This is the function that is called on each element of the array.
-    var reducerFunction = function reducerFunction(data, element) {
+    const reducerFunction = function reducerFunction(data, element) {
 
         // Add the current field to the object.
         data[element.name] = element.value;
@@ -72,13 +72,13 @@ var formToJSON_deconstructed = function formToJSON_deconstructed(elements) {
     };
 
     // This is used as the initial value of `data` in `reducerFunction()`.
-    var reducerInitialValue = {};
+    const reducerInitialValue = {};
 
     // To help visualize what happens, log the inital value, which we know is `{}`.
     console.log('Initial `data` value:', JSON.stringify(reducerInitialValue));
 
     // Now we reduce by `call`-ing `Array.prototype.reduce()` on `elements`.
-    var formData = [].reduce.call(elements, reducerFunction, reducerInitialValue);
+    const formData = [].reduce.call(elements, reducerFunction, reducerInitialValue);
 
     // The result is then returned for use elsewhere.
     return formData;
@@ -89,7 +89,7 @@ var formToJSON_deconstructed = function formToJSON_deconstructed(elements) {
  * @@param  {HTMLFormControlsCollection} elements  the form elements
  * @@return {Object}                               form data as an object literal
  */
-var formToJSON = function formToJSON(elements) {
+function formToJSON(elements) {
     return [].reduce.call(elements, function (data, element) {
 
         // Make sure the element has the required properties and should be added.
@@ -117,16 +117,16 @@ var formToJSON = function formToJSON(elements) {
  * @@param  {Event} event  the submit event triggered by the user
  * @@return {void}
  */
-var handleFormSubmit = function handleFormSubmit(event) {
+function handleFormSubmit(event) {
 
     // Stop the form from submitting since we’re handling that with AJAX.
     event.preventDefault();
 
     // Call our function to get the form data.
-    var data = formToJSON(form.elements);
+    const data = formToJSON(form.elements);
 
     // Demo only: print the form data onscreen as a formatted JSON object.
-    var dataContainer = document.getElementsByClassName('results_display')[0];
+    const dataContainer = document.getElementsByClassName('results_display')[0];
 
     // Use `JSON.stringify()` to make the output valid, human-readable JSON.
     dataContainer.textContent = JSON.stringify(data, null, "  ");
@@ -137,7 +137,7 @@ var handleFormSubmit = function handleFormSubmit(event) {
     http.open("POST", url, true);
 
     var token;
-    for (var key in data) {
+    for (let key in data) {
         if (data.hasOwnProperty(key)) {
             if (key === 'NCSRF') {
                 token = data[key];
