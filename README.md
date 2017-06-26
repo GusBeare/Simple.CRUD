@@ -73,7 +73,7 @@ Future considerations:
 
 ### To run the app
 
-1. You need SQL Server and Visual Studio 2015 Community
+1. You need a SQL Server instance and Visual Studio 2017 Community
 1. Create the table by running in the script found in the solution here:  /SQL/tbl_contactLog.sql 
 2. Edit the web.config connection string to point to your DB.
 
