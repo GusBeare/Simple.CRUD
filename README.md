@@ -52,15 +52,23 @@ Add a tiny js file to handle the form serialisation and post.
 
     <script src="~/Content/js/formPost.js"></script>
 
-Thanks to <a href="https://code.lengstorf.com/get-form-values-as-json/">Jason Lengstorf</a> for this great javascript code that made the Ajax bit a breeze.
+Note: I have switched this to a Typescript file so I can use new Javascript features and transpile down to es5. On build the Typescript is transpiled to
+the es5 version as `formPost.js`.
+
+For the server API I am using [NancyFx](http://nancyfx.org/ "Nancy Fx") and [Simple.Data](http://simplefx.org/simpledata/docs/ "Simple.Data") to create a few generic routes to do the CRUD.
+
+There are no concrete classes, models or view models in any of the code. You don't have to fiddle about with Javascript options for each form. The Javascript is so light you can include it in the layout. 
+It is generic and needs no config. The js code just needs a constant for the server route to submit the data via Ajax post and the HTML form just needs to have the attribute <em>class="crud-form"</em>.
+
+See `formPost.ts` for these constants:
+
+    const FORM_NAME = "crud-form"; // the form to receive posts
+    const API_URL = "/data/modify";  // the API endpoint that handles the CRUD operations
+    const RESPONSE_CONTAINER = "response_display";   // #DEV the container that shows the form data as json for debugging
+    const RESULTS_CONTAINER = "results_display";    // the container where success/fail messages are shown from the server
 
 
-Then for the server we use [NancyFx](http://nancyfx.org/ "Nancy Fx") and [Simple.Data](http://simplefx.org/simpledata/docs/ "Simple.Data") to create a few generic routes to do the CRUD.
-
-There are no concrete classes, models or view models. You don't have to fiddle about with Javascript options for each form. The Javascript is so light you can include it in the layout. 
-It is generic and needs no config. The js code just needs a constant for the server route to submit the data via Ajax post and a the HTML form just needs to have the attribute <em>class="crud-form"</em>.
-
-I am not sure if this idea is useful or not but it was fun building it. 
+I am not sure if this prototype is useful or not but it was fun building it. 
 
 Future considerations:
 
