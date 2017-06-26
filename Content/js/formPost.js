@@ -1,5 +1,8 @@
 'use strict';
 var FORM_NAME = "crud-form";
+var API_URL = "/data/modify";
+var RESPONSE_CONTAINER = "response_display";
+var RESULTS_CONTAINER = "results_display";
 /**
  * Checks that an element has a non-empty `name` and `value` property.
  * @@param  {Element} element  the element to check
@@ -111,13 +114,12 @@ function handleFormSubmit(event) {
     // Call our function to get the form data.
     var data = formToJSON(document.getElementsByClassName(FORM_NAME)[0]);
     // Demo only: print the form data onscreen as a formatted JSON object.
-    var dataContainer = document.getElementsByClassName('results_display')[0];
+    var dataContainer = document.getElementsByClassName(RESULTS_CONTAINER)[0];
     // Use `JSON.stringify()` to make the output valid, human-readable JSON.
     dataContainer.textContent = JSON.stringify(data, null, "  ");
     // Post the data to our handler
     var http = new XMLHttpRequest();
-    var url = "/data/modify";
-    http.open("POST", url, true);
+    http.open("POST", API_URL, true);
     var token;
     for (var key in data) {
         if (data.hasOwnProperty(key)) {
@@ -132,11 +134,13 @@ function handleFormSubmit(event) {
     http.setRequestHeader("NCSRF", token);
     http.onreadystatechange = function () {
         if (http.readyState === 4 && http.status === 200) {
-            var responseContainer = document.getElementsByClassName('response_display')[0];
+            var responseContainer = document.getElementsByClassName(RESPONSE_CONTAINER)[0];
+            console.log(RESPONSE_CONTAINER);
             responseContainer.textContent = http.responseText;
         }
         else if (http.readyState === 2 && http.status === 403) {
-            var responseContainer = document.getElementsByClassName('response_display')[0];
+            var responseContainer = document.getElementsByClassName(RESPONSE_CONTAINER)[0];
+            console.log(RESPONSE_CONTAINER);
             responseContainer.textContent = http.responseText;
         }
     };

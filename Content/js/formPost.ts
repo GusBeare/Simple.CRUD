@@ -1,7 +1,10 @@
 ﻿
 'use strict';
 
-var FORM_NAME = "crud-form";
+const FORM_NAME = "crud-form";
+const API_URL = "/data/modify";
+const RESPONSE_CONTAINER = "response_display";
+const RESULTS_CONTAINER = "results_display";
 
 /**
  * Checks that an element has a non-empty `name` and `value` property.
@@ -126,15 +129,14 @@ function handleFormSubmit(event) {
     const data = formToJSON(document.getElementsByClassName(FORM_NAME)[0]);
 
     // Demo only: print the form data onscreen as a formatted JSON object.
-    const dataContainer = document.getElementsByClassName('results_display')[0];
+    const dataContainer = document.getElementsByClassName(RESULTS_CONTAINER)[0];
 
     // Use `JSON.stringify()` to make the output valid, human-readable JSON.
     dataContainer.textContent = JSON.stringify(data, null, "  ");
 
     // Post the data to our handler
     var http = new XMLHttpRequest();
-    const url = "/data/modify";
-    http.open("POST", url, true);
+    http.open("POST", API_URL, true);
 
     let token;
     for (let key in data) {
@@ -153,13 +155,15 @@ function handleFormSubmit(event) {
     http.onreadystatechange = () => { //Call a function when the state changes.
         if (http.readyState === 4 && http.status === 200) {
 
-            var responseContainer = document.getElementsByClassName('response_display')[0];
+            var responseContainer = document.getElementsByClassName(RESPONSE_CONTAINER)[0];
+            console.log(RESPONSE_CONTAINER);
             responseContainer.textContent = http.responseText;
 
         }
         else if (http.readyState === 2 && http.status === 403) {
 
-            var responseContainer = document.getElementsByClassName('response_display')[0];
+            var responseContainer = document.getElementsByClassName(RESPONSE_CONTAINER)[0];
+            console.log(RESPONSE_CONTAINER);
             responseContainer.textContent = http.responseText;
         }
     }
