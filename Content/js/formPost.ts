@@ -178,7 +178,7 @@ function handleFormSubmit(event: any)
  * its class name, then attach the `handleFormSubmit()` function to the 
  * `submit` event.
  */
-var form = document.getElementsByClassName(FORM_NAME)[0];
+var form = document.getElementsByClassName(FORM_NAME)[0] as HTMLFormElement;
 
 
 // only try to attach if a form was found
