@@ -163,6 +163,7 @@
     <Content Include="packages\Microsoft.Web.Infrastructure.1.0.0.0\Microsoft.Web.Infrastructure.1.0.0.0.nupkg" />
     <Content Include="tsconfig.json" />
     <Content Include="Content\js\formPost.js.map" />
+    <Content Include="LICENCE" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
