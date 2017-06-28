@@ -156,6 +156,12 @@ function handleFormSubmit(event) {
 var form = document.getElementsByClassName(FORM_NAME)[0];
 // only try to attach if a form was found
 if (typeof (form) != 'undefined' && form != null) {
-    form.addEventListener('submit', handleFormSubmit);
+    // Some browsers such as IE8 do not support addEventListener so we must use attachEvent
+    if (form.addEventListener) {
+        form.addEventListener('submit', handleFormSubmit);
+    }
+    else {
+        window.attachEvent("onsubmit", handleFormSubmit);
+    }
 }
 //# sourceMappingURL=formPost.js.map
