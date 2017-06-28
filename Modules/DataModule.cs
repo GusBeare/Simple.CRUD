@@ -25,7 +25,7 @@ namespace SimpleCRUD
                 return View[p.view, uRows];
             };
 
-            // get a list from a table and load a view
+            // get a row from a table and load a view
             Get["/data/readrow/{table}/{Id}/{view}"] = p =>
             {
                 ViewBag.FormTitle = "Edit Enquiry";

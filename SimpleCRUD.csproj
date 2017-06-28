@@ -96,7 +96,6 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\custom.css" />
     <Content Include="Content\js\bootstrap.min.js" />
-    <Content Include="Content\js\formPost-old.js" />
     <Content Include="Content\js\formPost.js" />
     <Content Include="packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll" />
     <Content Include="packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.xml" />
