@@ -1,5 +1,5 @@
 
-### Simple.CRUD Experiment
+### Simple.CRUD
 
  Tired of writing the same old CRUD day after day? What if all we had to do was build an HTML form to perform common data operations 
  on a given table?
