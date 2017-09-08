@@ -68,7 +68,7 @@ See `formPost.ts` for these constants:
     const RESULTS_CONTAINER = "results_display";    // the container where success/fail messages are shown from the server
 
 
-I am not sure if this prototype is useful or not but it was fun building it. 
+I am not sure if this prototype is useful or not but it was fun building it. CREATE, READ and UPDATE are working but I still need to implement DELETE.
 
 Future considerations:
 
