@@ -11,6 +11,7 @@
     <UseGlobalApplicationHostFile />
     <ToolsVersionPromptShown>0.0</ToolsVersionPromptShown>
     <Use64BitIISExpress />
+    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
